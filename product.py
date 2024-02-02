@@ -1,5 +1,6 @@
 from db import Db
 
+
 class Product:
     def __init__(self):
         self.table = 'product'
@@ -33,3 +34,4 @@ class Product:
         query = f"SELECT * FROM {self.table} WHERE id_category = %s"
         params = (id_category,)
         return self.db.fetch(query, params)
+    

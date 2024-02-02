@@ -1,5 +1,6 @@
 from product import Product
 from category import Category
+import csv
 
 class Shop:
     def __init__(self):
@@ -39,4 +40,10 @@ class Shop:
     def readByCategory(self, id_category):
         return self.product.readByCategory(id_category)
 
-    
+    def exportToCsv(self, filename):
+        products = self.readProducts()
+        with open((filename + '.csv'), mode='w', newline='') as file:
+            writer = csv.writer(file, delimiter=';', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            writer.writerow(['id', 'name', 'description', 'price', 'quantity', 'id_category'])
+            for product in products:
+                writer.writerow(product)

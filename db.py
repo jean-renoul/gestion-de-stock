@@ -31,3 +31,6 @@ class Db:
         result = self.cursor.fetchall()
         self.disconnect()
         return result
+    
+    
+    
